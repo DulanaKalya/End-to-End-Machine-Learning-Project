@@ -13,7 +13,7 @@ logging.basicConfig(
     format = logging_str,
 
     handlers=[
-        logging.FileHander(log_filepath),
+        logging.FileHandler(log_filepath),
         logging.StreamHandler(sys.stdout)
     ]
 )
