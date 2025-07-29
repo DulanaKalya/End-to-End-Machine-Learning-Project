@@ -1,0 +1,298 @@
+<!-- START OF MODIFIED HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wine Quality Prediction Result</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 50px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb);
+    }
+    .wine-icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+    .title {
+      font-size: 2.5em;
+      color: #1e3a8a;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    .result-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-radius: 15px;
+      padding: 40px;
+      margin: 30px 0;
+      border-left: 5px solid #1d4ed8;
+      position: relative;
+    }
+    .result-label {
+      font-size: 1.2em;
+      color: #475569;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .quality-score {
+      font-size: 4em;
+      font-weight: bold;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: scaleIn 0.5s ease-out 0.3s both;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+    .quality-description {
+      font-size: 1.3em;
+      color: #334155;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .rating-bar {
+      width: 100%;
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 20px 0;
+      position: relative;
+    }
+    .rating-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb);
+      border-radius: 6px;
+      transition: width 1.5s ease-out 0.5s;
+      position: relative;
+    }
+    .rating-fill::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+      animation: shimmer 2s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .rating-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9em;
+      color: #64748b;
+      margin-top: 10px;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 150px;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+    }
+    .btn-secondary {
+      background: white;
+      color: #2563eb;
+      border: 2px solid #2563eb;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .sparkles {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5em;
+      animation: sparkle 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes sparkle {
+      from { opacity: 0.5; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1.2); }
+    }
+    .wine-details {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(191, 219, 254, 0.1);
+      border-radius: 12px;
+      text-align: left;
+    }
+    .detail-title {
+      color: #1e3a8a;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .detail-text {
+      color: #475569;
+      line-height: 1.6;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 30px 20px; margin: 10px; }
+      .title { font-size: 2em; }
+      .quality-score { font-size: 3em; }
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sparkles">✨</div>
+    <div class="wine-icon">🍷</div>
+    <h1 class="title">Prediction Complete!</h1>
+    <div class="result-container">
+      <div class="result-label">Wine Quality Score</div>
+      <div class="quality-score" id="qualityScore">{{prediction}}</div>
+      <div class="quality-description" id="qualityDescription"></div>
+      <div class="rating-bar">
+        <div class="rating-fill" id="ratingFill"></div>
+      </div>
+      <div class="rating-labels">
+        <span>Poor (0-3)</span>
+        <span>Average (4-6)</span>
+        <span>Excellent (7-10)</span>
+      </div>
+    </div>
+    <div class="wine-details">
+      <h3 class="detail-title">🎯 What This Means</h3>
+      <p class="detail-text" id="detailText"></p>
+    </div>
+    <div class="action-buttons">
+      <a href="/" class="btn btn-primary">🔄 Try Another Wine</a>
+      <a href="/train" class="btn btn-secondary">🚀 Retrain Model</a>
+    </div>
+  </div>
+  <script>
+    const prediction = parseFloat(document.getElementById('qualityScore').textContent);
+    function setupResult(score) {
+      const qualityDesc = document.getElementById('qualityDescription');
+      const detailText = document.getElementById('detailText');
+      const ratingFill = document.getElementById('ratingFill');
+      let description, details, percentage;
+      if (score >= 7) {
+        description = "🌟 Excellent Quality";
+        details = "This wine shows exceptional characteristics! It has well-balanced acidity, optimal alcohol content, and superior chemical composition that indicates premium quality. Perfect for special occasions.";
+        percentage = (score / 10) * 100;
+      } else if (score >= 4) {
+        description = "👍 Good Quality";
+        details = "This wine demonstrates solid quality with balanced characteristics. It shows good potential and would be enjoyable for everyday consumption. The chemical composition indicates a well-made wine.";
+        percentage = (score / 10) * 100;
+      } else {
+        description = "⚠️ Below Average";
+        details = "This wine shows some challenges in its chemical composition that may affect taste and overall quality. Consider adjusting the winemaking process to improve balance and characteristics.";
+        percentage = (score / 10) * 100;
+      }
+      qualityDesc.textContent = description;
+      detailText.textContent = details;
+      setTimeout(() => {
+        ratingFill.style.width = percentage + '%';
+      }, 500);
+    }
+    setupResult(prediction);
+    if (prediction >= 7) {
+      document.body.style.background = 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)';
+      for (let i = 0; i < 20; i++) {
+        createParticle();
+      }
+    }
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.style.cssText = `
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #3b82f6;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1000;
+        left: ${Math.random() * window.innerWidth}px;
+        top: ${window.innerHeight + 10}px;
+        animation: float 3s ease-out forwards;
+      `;
+      document.body.appendChild(particle);
+      setTimeout(() => { particle.remove(); }, 3000);
+    }
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        to {
+          transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
+<!-- END OF MODIFIED HTML -->
