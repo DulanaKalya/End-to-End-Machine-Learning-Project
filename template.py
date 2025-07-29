@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import logging
 
-project_name = "End-to-End-Machine-Learning-Project"
+project_name = "machinelearningproject"
 
 logging.basicConfig(level=logging.INFO,format='[%(asctime)s]: %(message)s:')
 
