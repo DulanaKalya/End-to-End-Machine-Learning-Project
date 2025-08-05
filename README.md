@@ -178,7 +178,7 @@ docker run wine-quality-pipeline
 
 ---
 
-## 📊 Dataset Information
+##  Dataset Information
 
 - **Dataset Name**: Red Wine Quality Dataset
 - **Source**: [UCI Machine Learning Repository via Kaggle](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009)
@@ -225,7 +225,7 @@ Data validation schema:
 
 ---
 
-## 📈 Experiment Tracking
+##  Experiment Tracking
 
 ### MLflow Integration
 
@@ -250,7 +250,7 @@ Connect your experiments to DagsHub for:
 
 ---
 
-## 🧪 Model Performance
+##  Model Performance
 
 The pipeline supports multiple algorithms:
 - **Random Forest Classifier**
@@ -323,7 +323,7 @@ Model Used: Random Forest Classifier
 
 
 
-## 📊 Project Stats
+##  Project Stats
 
 ![GitHub stars](https://img.shields.io/github/stars/yourusername/wine-quality-ml-pipeline)
 ![GitHub forks](https://img.shields.io/github/forks/yourusername/wine-quality-ml-pipeline)
@@ -332,4 +332,3 @@ Model Used: Random Forest Classifier
 
 ---
 
-*Happy Machine Learning! 🍷🤖*
