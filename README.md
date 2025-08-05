@@ -1,4 +1,4 @@
-# 🍷 Red Wine Quality Prediction – End-to-End ML Pipeline
+#  Red Wine Quality Prediction – End-to-End ML Pipeline
 
 
 
@@ -6,19 +6,19 @@ This project implements a modular and scalable **machine learning pipeline** for
 
 ---
 
-## 🎯 Project Objective
+##  Project Objective
 
 The main goal of this project is to **automate and structure the ML lifecycle** while enabling **experiment tracking and reproducibility**. It is designed to:
 
-- 🔄 Streamline data ingestion, validation, transformation, model training, and evaluation
-- ⚙️ Enable full control through external YAML configuration
-- 📊 Track and compare experiments using **MLflow** and **DagsHub**
-- 🏗️ Serve as a reusable template for real-world ML workflows
-- 🚀 Demonstrate best practices in MLOps and experiment management
+-  Streamline data ingestion, validation, transformation, model training, and evaluation
+-  Enable full control through external YAML configuration
+-  Track and compare experiments using **MLflow** and **DagsHub**
+-  Serve as a reusable template for real-world ML workflows
+-  Demonstrate best practices in MLOps and experiment management
 
 ---
 
-## 🔁 ML Pipeline Workflow
+##  ML Pipeline Workflow
 
 ```mermaid
 graph LR
@@ -34,15 +34,15 @@ Each stage is implemented as an independent pipeline module using object-oriente
 
 ### Pipeline Stages:
 
-1. **📥 Data Ingestion**: Download and load the red wine quality dataset
-2. **✅ Data Validation**: Validate data schema, check for missing values and data types
-3. **🔄 Data Transformation**: Feature engineering, scaling, and data preprocessing
-4. **🧠 Model Training**: Train multiple ML models with hyperparameter tuning
-5. **📊 Model Evaluation**: Evaluate models and log metrics to MLflow and DagsHub
+1. ** Data Ingestion**: Download and load the red wine quality dataset
+2. ** Data Validation**: Validate data schema, check for missing values and data types
+3. ** Data Transformation**: Feature engineering, scaling, and data preprocessing
+4. ** Model Training**: Train multiple ML models with hyperparameter tuning
+5. ** Model Evaluation**: Evaluate models and log metrics to MLflow and DagsHub
 
 ---
 
-## 🧰 Tools & Technologies
+##  Tools & Technologies
 
 | **Category**               | **Tools / Libraries**                           | **Purpose**                                                  |
 |----------------------------|--------------------------------------------------|--------------------------------------------------------------|
@@ -108,15 +108,15 @@ wine-quality-ml-pipeline/
 
 ---
 
-## ⚡ Quick Start
+##  Quick Start
 
-### 🔧 Prerequisites
+###  Prerequisites
 
 - Python 3.8 or higher
 - Git
 - (Optional) Docker for containerized deployment
 
-### 📥 Installation
+###  Installation
 
 1. **Clone the repository**:
    ```bash
@@ -140,7 +140,7 @@ wine-quality-ml-pipeline/
    pip install -e .
    ```
 
-### 🚀 Run the Complete Pipeline
+###  Run the Complete Pipeline
 
 Execute the entire ML pipeline with a single command:
 
@@ -164,7 +164,7 @@ For development and experimentation, you can run individual stages using the Jup
 jupyter notebook research/
 ```
 
-### 🐳 Docker Deployment
+###  Docker Deployment
 
 Build and run using Docker:
 
@@ -271,7 +271,7 @@ Typical performance metrics:
 
 
 
-### 📊 Sample Prediction Output
+###  Sample Prediction Output
 
 ```bash
 === Wine Quality Prediction Results ===
@@ -303,7 +303,7 @@ Model Used: Random Forest Classifier
 
 
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 ### Short-term Goals
 - [ ] Add model packaging and deployment via Flask/FastAPI
